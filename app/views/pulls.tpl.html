@@ -1,0 +1,26 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#">PR</a>
+    <ul class="nav pull-right">
+      <li><a href="#" ng-click="getPRs(true)">Refresh</a></li>
+      <li><a href="#" ng-click="goToAccount()">Account</a></li>
+    </ul>
+  </div>
+</div>
+<div class="pr-repo-container">
+  <div ng-repeat="(repo, prs) in repoPRs">
+    <div class="repo-header">
+      {{repo}}
+    </div>
+    <div class="pr-item" ng-repeat="pr in prs | orderBy:prOrder"
+         ng-click="goToPR(pr)">
+      <div class="pr-item-ctr">
+        <div class="pr-item-number">{{pr.number}} ({{pr.commits.length}})
+          ({{pr.commitCommentCount}})
+        </div>
+        <div class="pr-item-user">{{pr.user.login}}</div>
+        <div class="pr-item-title">{{pr.title}}</div>
+      </div>
+    </div>
+  </div>
+</div>

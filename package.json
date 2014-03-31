@@ -1,0 +1,36 @@
+{
+  "name": "pr",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/gbockus/pr",
+  "bugs": "https://github.com/gbockus/pr/issues",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "https://github.com/gbockus"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gbockus/pr.git"
+  },
+  "dependencies": {
+    "node-github": "0.0.3",
+    "q": "~1.0.0",
+    "nedb": "~0.10.4",
+    "node-notifier": "~2.0.3"
+  },
+  "devDependencies": {
+    "matchdep": "~0.1.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-jshint": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-rename": "0.0.3",
+    "grunt-contrib-compress": "~0.5.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

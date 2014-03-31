@@ -1,0 +1,16 @@
+app/bower_components
+app/pr.db
+node_modules
+tmp
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+*.ids
+.idea
+
+# Mac OS X
+.DS_Store
+
+

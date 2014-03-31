@@ -1,0 +1,80 @@
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.pr-item-ctr {
+	display: inline-block;
+}
+
+.pr-item-ctr > div {
+	display: inline-block;
+}
+
+.pr-item {
+	padding: 10px;
+	border-bottom: 1px solid #666;
+	min-height: 22px;
+	line-height: 22px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.pr-item:last-child {
+	border-bottom: none;
+}
+
+.pr-item-number {
+	width: 100px;
+}
+
+.pr-item-user {
+	width: 125px;
+}
+
+.repo-header,
+.pr-header {
+	font-size: 22px;
+	font-weight: bold;
+	min-height: 30px;
+	line-height: 30px;
+	background-color: #999999;
+	color: #333333;
+	padding: 10px;
+}
+
+.repo-header {
+	border-radius: 6px;
+	margin-top: 10px;
+}
+
+.pr-header {
+	cursor: pointer;
+}
+
+.pr-commit-ctr {
+	margin: 10px;
+	border: 1px solid #666;
+}
+
+.pr-commit {
+	background-color: #f0f0f0;
+	min-height: 22px;
+	color: #333333;
+}
+
+.pr-comment {
+	padding-bottom: 10px;
+}
+
+.pr-repo-container {
+	margin-top: 51px;
+	padding: 0 10px 10px;
+}
+
+.navbar .brand {
+	margin-left: 0;
+	padding-left: 10px;
+}
