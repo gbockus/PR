@@ -1,0 +1,53 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#">PR</a>
+    <ul class="nav pull-right">
+      <li><a href="#" ng-click="goToPulls()">Pull Requests</a></li>
+    </ul>
+  </div>
+</div>
+<form novalidate class="form-horizontal">
+  <fieldset>
+    <legend>Github Account Information</legend>
+    <div class="control-group">
+      <label class="control-label" for="orgName" >Organization Name</label>
+      <div class="controls">
+        <input type="text" id="orgName" ng-model="user.orgname">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="token" >Token</label>
+      <div class="controls">
+        <input type="text" id="token" ng-model="user.token">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="frequency" >Refresh Frequency (s)</label>
+      <div class="controls">
+        <input type="text" id="frequency" ng-model="user.frequency">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="repo" >Add Repo</label>
+      <div class="controls">
+        <div class="input-append">
+          <input class="span2" id="repo" type="text" ng-model="currentRepo">
+          <button class="btn" ng-click="addRepo()" type="button">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="repos" >Repos</label>
+      <div class="controls">
+        <ul id="repos">
+          <li ng-repeat="repo in user.repos">{{repo}} <button class="btn" ng-click="removeRepo(repo)">Remove</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn" ng-click="update(user)">Save</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
