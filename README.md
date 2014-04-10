@@ -14,3 +14,11 @@ After you have pulled down the repo you must execute
 npm update;
 bower install;
 ```
+#Launching the application
+
+To start the application execute the nodewebkit binary from the PR/app directory.  
+
+```
+cd PR/app;
+nodewebkit
+```
