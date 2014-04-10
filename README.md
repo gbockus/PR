@@ -22,3 +22,5 @@ To start the application execute the nodewebkit binary from the PR/app directory
 cd PR/app;
 nodewebkit
 ```
+
+This projected is licensed under the terms of the MIT license.
