@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('services.github', [])
+  /**
+   * Service used for interacting with github.
+   */
   .factory('githubUtils', function(persistenceUtils, $state) {
 
     var GitHubApi = require("node-github"),
       Q = require('q'),
       userInfo;
 
-
+    /**
+     * Get the user infomation.
+     *
+     * @returns {Q} - A promise that resolves into the current user info including the
+     * github organization and token.  If the orgname or token is not set then the UI
+     * will be redirected to the account page.
+     */
     function getConfigInfo() {
-      var deferred = Q.defer();
       return persistenceUtils.getUserInfo()
         .then(function(configInfo) {
           if (!configInfo.orgname || !configInfo.token) {
@@ -18,13 +26,16 @@ angular.module('services.github', [])
             userInfo = configInfo;
             return configInfo;
           }
-
         });
-
-      return deferred.promise;
     }
 
-
+    /**
+     * Get a githubQ object for making q promise enabled calls.
+     *
+     * @returns {githubQ} - A object with methods that can be used to make calls to github
+     * services that have been wrapped by the q promise library.  Note there are only a limited
+     * number of services currently available.  See the function for available services.
+     */
     function getGithub() {
       return getConfigInfo()
         .then(function(userInfo) {
@@ -56,9 +67,13 @@ angular.module('services.github', [])
     return {
       org: undefined,
 
+      /**
+       * Get the organization.
+       *
+       * @returns {Q.promise} A promise that resolves into the Org object returned from github.
+       */
       getOrg: function() {
-        var me = this,
-          configPromise;
+        var me = this;
 
         if (this.org) {
           return new Q(this.org);
@@ -80,6 +95,14 @@ angular.module('services.github', [])
 
       },
 
+      /**
+       * Get Pull requests associated with the current organization.
+       *
+       * @param {String} repo - The github repository.
+       * @param {Boolean} refresh - True to force a refresh of the PR data, false or unset and it will either go to github if
+       *  no cached copy exists or return the cached copy.
+       * @returns {Array} An array of pull request objects.
+       */
       getPRs: function(repo, refresh) {
         var me = this;
         if (!refresh) {
@@ -95,8 +118,14 @@ angular.module('services.github', [])
         }
       },
 
+      /**
+       * Refresh the pr array for a repository.
+       *
+       * @private
+       * @param {String} repo - The github repository.
+       * @returns {Array} - The refreshed array of pull request object.
+       */
       refreshPRs: function(repo) {
-        var me = this;
 
         return this.getOrg()
           .then(function(org) {
