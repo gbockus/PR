@@ -1,12 +1,22 @@
 'use strict';
 
+/**
+ * A module to hold services related to PR statistics.
+ */
 angular.module('services.stats', [])
+  /**
+   * A service for keeping track of statistics around pull requests for a repository.
+   */
   .factory('statsSvc', function(persistenceUtils, notifier) {
     return {
+      /**
+       * Update the stats for a repo based on the pr object.
+       *
+       * @param {Object} repoPrs - A PR object associated with repositories.
+       */
       updateStats: function(repoPrs) {
         var currentStats = {},
-          repos = _.keys(repoPrs),
-          newStats = {};
+          repos = _.keys(repoPrs);
 
         if (repos.length === 0)
         {
