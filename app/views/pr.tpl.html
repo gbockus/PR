@@ -3,8 +3,16 @@
 </div>
 <div ng-repeat="commit in pr.commits">
   <div class="pr-commit-ctr">
-    <div class="pr-commit">commit: {{commit.sha}}</div>
-    <div ng-repeat="comment in commit.comments | orderBy:['line','created_at']">
+    <div class="pr-commit" >
+      <div class="pr-commit-sha" ng-click="openCommit(commit.html_url)">
+        {{commit.sha}}
+      </div>
+      <div class="pull-right pr-commit-toggle" ng-hide="commit.comments == 0" ng-switch="hideComments[commit.sha]" ng-click="hideComments[commit.sha] = !hideComments[commit.sha]">
+        <span ng-switch-when="true">+</span>
+        <span ng-switch-default>-</span>
+      </div>
+    </div>
+    <div ng-repeat="comment in commit.comments | orderBy:['line','created_at']" ng-hide="hideComments[commit.sha]">
       <div class="pr-comment">
         ({{$index + 1}} - {{comment.line}}) {{comment.user.login}}:  {{comment.body}}
       </div>

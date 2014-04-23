@@ -25,6 +25,7 @@ angular.module('pulls', [
     $scope.prOrder = 'updated_at';
     $scope.repoPRs = {};
     $scope.refreshPromise = undefined;
+    $scope.hideState = {};
 
     $scope.goToPR = function(pr) {
       currentUtils.setCurrent(pr);
@@ -54,7 +55,7 @@ angular.module('pulls', [
               s.$apply();
             });
         });
-    }
+    };
 
     $scope.getPRs(false);
 
@@ -73,7 +74,7 @@ angular.module('pulls', [
               $timeout.cancel($scope.refreshPromise);
             }
             $scope.frequency = parseInt(userInfo.frequency, 10) * 1000 || 60000;
-//            $scope.refreshPromise = $timeout(refreshPRs, $scope.frequency);
+            $scope.refreshPromise = $timeout(refreshPRs, $scope.frequency);
           }
         });
     }
