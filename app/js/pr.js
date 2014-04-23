@@ -18,12 +18,17 @@ angular.module('pr', [
         }
       });
   }])
-  .controller('PRCtrl', ['$scope', '$state', 'currentUtils', function($scope, $state, currentUtils) {
+  .controller('PRCtrl', ['$scope', '$state', 'currentUtils', 'externalUtils', function($scope, $state, currentUtils, externalUtils) {
     $scope.pr = currentUtils.current;
+    $scope.hideComments = {};
 
     $scope.goToPulls = function() {
       $state.go('pulls')
-    }
+    };
+
+    $scope.openCommit = function(url) {
+      externalUtils.openInBrowser(url);
+    };
   }]);
 
 

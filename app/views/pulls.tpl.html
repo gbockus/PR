@@ -9,17 +9,30 @@
 </div>
 <div class="pr-repo-container">
   <div ng-repeat="(repo, prs) in repoPRs">
-    <div class="repo-header">
+    <div class="repo-header" ng-click="hideState[repo] = !hideState[repo];">
       {{repo}}
-    </div>
-    <div class="pr-item" ng-repeat="pr in prs | orderBy:prOrder"
-         ng-click="goToPR(pr)">
-      <div class="pr-item-ctr">
-        <div class="pr-item-number">{{pr.number}} ({{pr.commits.length}})
-          ({{pr.commitCommentCount}})
+      <div class="pull-right pr-repo-header-deets">
+        <div>({{prs.length}})</div>
+        <div class="pr-repo-header-toggle" ng-switch="hideState[repo]">
+          <span ng-switch-when="true">+</span>
+          <span ng-switch-default>-</span>
         </div>
-        <div class="pr-item-user">{{pr.user.login}}</div>
-        <div class="pr-item-title">{{pr.title}}</div>
+      </div>
+    </div>
+    <div class="pr-container" ng-hide="hideState[repo]">
+      <div class="pr-item" ng-repeat="pr in prs | orderBy:prOrder"
+           ng-click="goToPR(pr)">
+        <div class="pr-item-ctr">
+          <div class="pr-user-info">
+            <img src="{{pr.user.avatar_url}}"/>
+
+            <div class="pr-item-user"><span>{{pr.user.login}}</span></div>
+            <div class="pr-item-number">{{pr.number}} ({{pr.commits.length}})
+              ({{pr.commitCommentCount}})
+            </div>
+          </div>
+          <div class="pr-item-title">{{pr.title}}</div>
+        </div>
       </div>
     </div>
   </div>

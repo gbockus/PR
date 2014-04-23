@@ -34,6 +34,29 @@ body {
 	width: 125px;
 }
 
+.pr-user-info img {
+	width: 48px;
+	height: 48px;
+}
+
+.pr-user-info {
+	width: 100px;
+	overflow: hidden;
+}
+
+.pr-item-title {
+	vertical-align: top;
+	padding-top: 40px;
+	max-width: 500px;
+}
+
+.pr-repo-header-deets {
+	display: inline-block;
+}
+.pr-repo-header-deets > div {
+	display: inline-block;
+}
+
 .repo-header,
 .pr-header {
 	font-size: 22px;
@@ -48,6 +71,7 @@ body {
 .repo-header {
 	border-radius: 6px;
 	margin-top: 10px;
+	cursor: pointer;
 }
 
 .pr-header {
@@ -59,10 +83,37 @@ body {
 	border: 1px solid #666;
 }
 
+.pr-comment {
+	padding-left: 5px;
+}
+
 .pr-commit {
 	background-color: #f0f0f0;
 	min-height: 22px;
 	color: #333333;
+	width: 100%;
+	display: inline-block;
+}
+
+.pr-commit > div {
+	display: inline-block;
+}
+
+.pr-commit-sha {
+	margin-left: 5px;
+}
+
+.pr-commit-sha:hover {
+	text-decoration: underline;
+}
+
+.pr-commit-toggle,
+.pr-commit-sha {
+	cursor: pointer;
+}
+
+.pr-commit-toggle {
+	margin-right: 5px;
 }
 
 .pr-comment {
